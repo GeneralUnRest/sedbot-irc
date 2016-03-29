@@ -8,6 +8,8 @@ var messages = {}
 
 client.addListener('message#',function (from, to, text, message) {
 
+	var matches
+
 	// when user asks for bots to report in
 	if (/^\.bots/.test(text) || /^!bots/.test(text)) { 
 		client.say(
@@ -23,9 +25,9 @@ client.addListener('message#',function (from, to, text, message) {
 	// gi means (G)lobal and case (I)nsensitive
 	// g means (G)lobal 
 	// i means case (I)nsensitive
-	var matches = text.match(/s\/(.*)\/(.*)\/(gi|g|i|)/)
+	matches = text.match(/s\/(.*)\/(.*)\/(gi|g|i|)/)
 
-	// NOTE: DDoS is possible is user gives a slow RegExp
+	// NOTE: DoS is possible if user gives a slow RegExp
 	if (matches && messages[from]) {
 		
 		try {
