@@ -22,7 +22,7 @@ var client = new irc.Client(config.server, config.nick, config.options)
 // last client message
 var messages = {}
 
-client.addListener('message#',function (from, to, text) {
+client.addListener('message#', function (from, to, text) {
 
 	var matches
 
@@ -61,7 +61,7 @@ client.addListener('message#',function (from, to, text) {
 	messages[from] = text
 })
 
-client.addListener('invite',function(channel) {
+client.addListener('invite', function(channel) {
 
 	client.join(channel)
 })
