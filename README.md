@@ -1,0 +1,4 @@
+sedbot
+======
+
+an irc bot

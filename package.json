@@ -1,0 +1,20 @@
+{
+  "name": "sedbot",
+  "version": "0.0.0",
+  "description": "bot allowing regular expression replacment",
+  "main": "sedbot.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "irc",
+    "bot",
+    "regex",
+    "sed"
+  ],
+  "author": "prussian <generalunrest@airmail.cc>",
+  "license": "Apache 2.0",
+  "dependencies": {
+    "irc": "^0.5.0"
+  }
+}
