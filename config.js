@@ -12,7 +12,7 @@ module.exports.options = {
     showErrors: false,
     autoRejoin: false,
     autoConnect: true,
-    channels: ['#/cum/'],
+    channels: [],
     secure: true,
     selfSigned: false,
     certExpired: false,
