@@ -51,6 +51,7 @@ client.addListener('message#', function (from, to, text) {
 				.replace(
 					RegExp(matches[1], matches[3]), matches[2]
 				)
+				.substring(0,512)
 			)
 		}
 		catch (e) {
