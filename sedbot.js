@@ -41,7 +41,7 @@ client.addListener('message#', function (from, to, text) {
 	// gi means (G)lobal and case (I)nsensitive
 	// g means (G)lobal 
 	// i means case (I)nsensitive
-	matches = text.match(/s\/(.*)\/(.*)\/(gi|g|i|)/)
+	matches = text.match(/\bs\/(.*)\/(.*)\/(gi|g|i|)/)
 
 	// NOTE: DoS is possible if user gives a slow RegExp
 	if (matches && messages[from]) {
