@@ -27,11 +27,18 @@ client.addListener('message#', function (from, to, text) {
 	var matches
 
 	// when user asks for bots to report in
-	if (/^\.bots/.test(text) || /^!bots/.test(text)) { 
+	if (/^[.!]bots/.test(text)) { 
 		client.say(
 			to, 'sedbot [NodeJS], '+
 			'fix your last post using: s/regex/replace/(gi|g|i|)'
 		) 
+		return
+	}
+
+	if (!messages[from]) {
+		
+		messages[from] = {}
+		messages[from][to] = text
 		return
 	}
 
@@ -43,23 +50,24 @@ client.addListener('message#', function (from, to, text) {
 	// i means case (I)nsensitive
 	matches = text.match(/\bs\/(.*)\/(.*)\/(gi|g|i|)/)
 
-	// NOTE: DoS is possible if user gives a slow RegExp
-	if (matches && messages[from]) {
+	if (!matches) {
 		
-		try {
-			client.say(to, '<'+from+'> '+messages[from]
-				.replace(
-					RegExp(matches[1], matches[3]), matches[2]
-				)
-				.substring(0,200)
-			)
-		}
-		catch (e) {
-			client.say(to, e.message)
-		}
+		messages[from][to] = text
+		return
 	}
 
-	messages[from] = text
+	try {
+		client.say(to, '<'+from+'> '+messages[from][to]
+			.replace(
+				RegExp(matches[1], matches[3]), matches[2]
+			)
+			.substring(0,200)
+		)
+	}
+	catch (e) {
+		client.say(to, e.message)
+	}
+
 })
 
 client.addListener('invite', function(channel) {
